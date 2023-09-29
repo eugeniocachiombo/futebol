@@ -2,7 +2,7 @@
     include 'class/equipa.php';
     include 'class/jogador.php';
     include 'class/jogo.php';
-    include 'dao/equipa_dao.php';
+    include 'app/dao/equipa_dao.php';
 
     /* 
      * 
@@ -13,33 +13,17 @@
      * 
      */
 
-    // 
-    $equipa = array(
-        new Equipa(1, "Real Madrid"),
-        new Equipa(2, "Barcelona"),
-        new Equipa(3, "Liverpool"),
-        new Equipa(4, "PSG")
-    );
     
-    $jogo1 = new Jogo(1, "Partida Amigável", $equipa[0], $equipa[1], "10:00", "10/02/2023");    
-    $jogo2 = new Jogo(2, "Partida Amigável", $equipa[1], $equipa[3], "10:00", "10/02/2023");    
-    $jogo3 = new Jogo(3, "Partida Amigável", $equipa[3], $equipa[0], "10:00", "10/02/2023");    
-    $jogo4 = new Jogo(4, "Partida Amigável", $equipa[3], $equipa[2], "10:00", "10/02/2023");    
-    $jogo5 = new Jogo(5, "Partida Amigável", $equipa[2], $equipa[1], "10:00", "10/02/2023");    
+    $equipaDAO = new EquipaDao();
+    $equipaDAO->Cadastrar("Barcelona");
+    $equipaDAO->Cadastrar("Real Madrid");
+    $equipaDAO->Cadastrar("Bayer");
+    $equipaDAO->Cadastrar("PSG");
+    $equipaDAO->Actualizar("PSG Neymar e Mbappe", 4);
+    $equipaDAO->Eliminar(1);
+    $equipaDAO->Buscar();
+   
     
-    $jogador = array(
-        new Jogador(1, "Ronaldo", 27, 97.4, 1.74, $equipa[1]),
-        new Jogador(2, "Snuff", 27, 97.4, 1.74, $equipa[3]),
-        new Jogador(3, "Eugénio", 27, 97.4, 1.74, $equipa[2]),
-        new Jogador(4, "Producer", 27, 97.4, 1.74, $equipa[3]),
-        new Jogador(5, "Somário", 27, 97.4, 1.74, $equipa[1])
-    );
-
-    //array_push($equipa, new Equipa(1, "Real Madrid"));
-    $posicao = array_search(new Equipa(4, "PSG"), $equipa);
-
-    echo "<pre>";
-    print_r($equipa);
-    echo "</pre>";
+    
 
 ?>
