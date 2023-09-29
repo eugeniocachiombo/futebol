@@ -2,6 +2,7 @@
     include 'class/equipa.php';
     include 'class/jogador.php';
     include 'class/jogo.php';
+    include 'dao/equipa_dao.php';
 
     /* 
      * 
@@ -34,12 +35,11 @@
         new Jogador(5, "Somário", 27, 97.4, 1.74, $equipa[1])
     );
 
-    foreach ($jogador as $value) {
-       echo "Nome do jogador: " . $value->getNomeJogador() . "<br> Nome da Equipa: " . $value->getEquipa()->getNomeEquipa() . "<br>------------- <br>";
-    }
-    
+    //array_push($equipa, new Equipa(1, "Real Madrid"));
+    $posicao = array_search(new Equipa(4, "PSG"), $equipa);
+
     echo "<pre>";
-    print_r($jogador);
+    print_r($equipa);
     echo "</pre>";
 
 ?>
