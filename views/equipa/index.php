@@ -9,7 +9,7 @@
         <input type="submit" value="Eliminar" name="eliminar">
     </form>
 
-    <?php include "CRUD/buscar.php"; ?>
+    <?php include "CRUD/tabela.php"; ?>
 </body>
 
 

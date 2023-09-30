@@ -5,7 +5,6 @@ class EquipaDao {
     private $db;
 
     function Cadastrar( $equipa ) {
-      
         $this->db = GetConexao();
         $sql = 'insert into equipa ( nomeEquipa ) values ( ? )';
         $stmt = $this->db->prepare( $sql );
@@ -16,11 +15,9 @@ class EquipaDao {
         } else {
             echo '<br>Erro de Cadastro';
         }
-
     }
 
     function Actualizar( $equipa ) {
-
         $this->db = GetConexao();
         $sql = 'update equipa set nomeEquipa = ? where idEquipa = ?';
         $stmt = $this->db->prepare( $sql );
@@ -35,7 +32,6 @@ class EquipaDao {
     }
 
     function Eliminar( $id ) {
-
         $this->db = GetConexao();
         $sql = 'delete from equipa where idEquipa = ?';
         $stmt = $this->db->prepare( $sql );
@@ -53,12 +49,7 @@ class EquipaDao {
         $sql = 'select * from equipa';
         $stmt = $this->db->prepare( $sql );
         $stmt->execute();
-
-        foreach ( $stmt->fetchAll() as $value ) {
-            echo '<br>Id da Equipa: ' . $value["idEquipa"];
-            echo '<br>Nome da Equipa: ' .  $value["nomeEquipa"];
-            echo '<br> -------------- <br>';
-        }
+        return $stmt->fetchAll(); 
     }
 
     function RetornoEquipas($id) {
