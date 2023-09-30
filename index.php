@@ -14,38 +14,52 @@
      * jogo recebe 7 argumentos como parâmetro após ser instanciado, por intermédio do que lhe foi passado ao do construtor
      * 
      */
+    
+    
+        $equipaA = new Equipa(30, "Barcelona"); 
+        $equipaDAO = new EquipaDao();
+        //$equipaDAO->Cadastrar($equipaA);
+        //$equipaDAO->Actualizar($equipaB);
+        $equipaDAO->Eliminar(33);
+        $equipaDAO->Buscar();
+        echo "<hr>";
+    /* */
+    
+    /* 
+        $equipaDAO = new EquipaDao();
+        $retornoDao = $equipaDAO->RetornoEquipas();
+        $equipa = new Equipa($retornoDao[0]["idEquipa"], $retornoDao[0]["nomeEquipa"]);
 
-    $equipaA = new Equipa(1, "Barcelona"); 
-    $equipaDAO = new EquipaDao();
-    //$equipaDAO->Cadastrar($equipaA);
-    //$equipaDAO->Actualizar($equipaB);
-    //$equipaDAO->Eliminar($equipaB);
-    $equipaDAO->Buscar();
-    echo "<hr>";
+        $jogador = new Jogador(7, "Eugénio", 39, 87.90, 1.90, $equipa);
 
-/*   
-    $jogadorA = new Jogador(1, "Ronaldo", 39, 87.90, 1.90, $equipaB);
-    $jogadorB = new Jogador(2, "Messi", 39, 87.90, 1.90, $equipaA);
-    $jogadorC = new Jogador(3, "Mbape", 39, 87.90, 1.90, $equipaC);
-    $jogadorDAO = new JogadorDao();
+        $jogadorDAO = new JogadorDao();
+        $jogadorDAO->Cadastrar($jogador);
+        $jogadorDAO->Actualizar($jogador);
+        $jogadorDAO->Eliminar($jogador);
+        $jogadorDAO->Buscar();
+        echo "<hr>";
+    */
 
-    $jogadorDAO->Cadastrar($jogadorA);
-    $jogadorDAO->Cadastrar($jogadorB);
-    $jogadorDAO->Cadastrar($jogadorC);
-    $jogadorDAO->Buscar();
-    echo "<hr>";
+    /*
+        $equipaDAO = new EquipaDao();
+        $retornoDao = $equipaDAO->RetornoEquipas(26);
 
-    $jogoA = new Jogo(1,"Partida Amigável", $equipaA, $equipaB, "10:30", "12/04/2024");
-    $jogoDAO = new JogoDao();
+        $equipaA = new Equipa($retornoDao["idEquipa"], $retornoDao["nomeEquipa"]);
+        $equipaB = new Equipa($retornoDao["idEquipa"], $retornoDao["nomeEquipa"]);
 
-    $jogoDAO->Cadastrar($jogoA);
-    $jogoDAO->Buscar();
-    echo "<hr>";
+        $jogo = new Jogo(4, "Partida Amigável", $equipaA, $equipaB, "10:30", "2024-04-18", false, false);
+        $jogoDAO = new JogoDao();
 
-    $jogo = $jogoDAO->RetornoJogos();
-    $jogo[0]->MarcarJogo();
-    $jogo[0]->Jogar();
-    $jogo[0]->info();
-    echo "<hr>";
-*/
+        //$jogoDAO->Cadastrar($jogo);
+        //$jogoDAO->Actualizar($jogo);
+        //$jogoDAO->Eliminar($id);
+        //$jogoDAO->Buscar();
+        echo "<hr>";
+
+        $retornoMetodos = $jogoDAO->RetornoJogos(6);
+        $Busca = new Jogo($retornoMetodos["idJogo"], $retornoMetodos["temaJogo"], $equipaA, $equipaB, $retornoMetodos["horaJogo"], $retornoMetodos["dataJogo"], $retornoMetodos["estadoJogo"], $retornoMetodos["infoJogo"]);
+        $Busca->MarcarJogo();
+        $Busca->Jogar();
+        $Busca->info();
+    */
 ?>

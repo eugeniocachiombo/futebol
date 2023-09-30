@@ -1,34 +1,86 @@
 <?php
-    class JogadorDao  
-    {
-        private $db = array();
 
-      function Cadastrar($jogador){
-          array_push($this->db, $jogador);
-      }
+class JogadorDao {
+    private $db;
 
-      function Actualizar($jogador){
-          $this->db[$jogador->getIdJogador() - 1] = $jogador;
-      }
+    function Cadastrar( $jogador ) {
 
-      function Eliminar($jogador){
-        unset($this->db[$jogador->getIdJogador() - 1]);
-      }
+        $this->db = GetConexao();
+        $sql = 'insert into jogador (nomeJogador, idadeJogador, pesoJogador, alturaJogador, idEquipa) values ( ?,?,?,?,? )';
+        $stmt = $this->db->prepare( $sql );
+        $stmt->bindValue( 1, $jogador->getNomeJogador() );
+        $stmt->bindValue( 2, $jogador->getIdadeJogador() );
+        $stmt->bindValue( 3, $jogador->getPesoJogador() );
+        $stmt->bindValue( 4, $jogador->getAlturaJogador() );
+        $stmt->bindValue( 5, $jogador->getEquipa()->getIdEquipa() );
 
-        function Buscar(){
-          foreach ($this->db as $value) {
-            echo "Id do Jogador: " . $value->getIdJogador();
-            echo "<br>Nome do Jogador: " .  $value->getNomeJogador();
-            echo "<br>Idade do Jogador: " .  $value->getIdadeJogador();
-            echo "<br>Peso do Jogador: " .  $value->getPesoJogador();
-            echo "<br>Altura do Jogador: " .  $value->getAlturaJogador();
-            echo "<br>Equipa do Jogador: " .  $value->getEquipa()->getNomeEquipa();
-            echo "<br> -------------- <br>";
-          }
-        }
-
-        function RetornoJogadores(){
-          return $this->db;
+       if ( $stmt->execute() ) {
+            echo '<br>Cadastro feito com sucesso';
+        } else {
+            echo '<br>Erro de Cadastro';
         }
     }
+
+    function Actualizar( $jogador ) {
+        $this->db = GetConexao();
+        $sql = 'update jogador set nomeJogador=?, idadeJogador=?, pesoJogador=?, alturaJogador=?, idEquipa=? where idJogador = ?';
+        $stmt = $this->db->prepare( $sql );
+        $stmt->bindValue( 1, $jogador->getNomeJogador() );
+        $stmt->bindValue( 2, $jogador->getIdadeJogador() );
+        $stmt->bindValue( 3, $jogador->getPesoJogador() );
+        $stmt->bindValue( 4, $jogador->getAlturaJogador() );
+        $stmt->bindValue( 5, $jogador->getEquipa()->getIdEquipa());
+        $stmt->bindValue( 6, $jogador->getIdJogador() );
+
+        echo "saida: ".$jogador->getNomeJogador() . "<br>";
+        if ( $stmt->execute() ) {
+            echo '<br>Actualização feito com sucesso';
+        } else {
+            echo '<br>Erro de Actualização';
+        }
+    }
+
+    function Eliminar( $id ) {
+        $this->db = GetConexao();
+        $sql = 'delete from jogador where idJogador = ?';
+        $stmt = $this->db->prepare( $sql );
+        $stmt->bindValue( 1, $id );
+
+        if ( $stmt->execute() ) {
+            echo '<br>Eliminação feito com sucesso';
+        } else {
+            echo '<br>Erro de Eliminação';
+        }
+    }
+
+    function Buscar() {
+        $this->db = GetConexao();
+        $sql = 'select * from jogador
+                inner join equipa
+                on equipa.idEquipa = jogador.idEquipa';
+        $stmt = $this->db->prepare( $sql );
+        $stmt->execute();
+
+        foreach ( $stmt->fetchAll() as $value ) {
+            echo 'Id do Jogador: ' . $value["idJogador"];
+            echo '<br>Nome do Jogador: ' .  $value["nomeJogador"];
+            echo '<br>Idade do Jogador: ' .  $value["idadeJogador"];
+            echo '<br>Peso do Jogador: ' .  $value["pesoJogador"];
+            echo '<br>Altura do Jogador: ' .  $value["alturaJogador"];
+            echo '<br>Equipa do Jogador: ' .  $value["nomeEquipa"];
+            echo '<br> -------------- <br>';
+        }
+    }
+
+    function RetornoJogadores() {
+        $this->db = GetConexao();
+        $sql = 'select * from jogador
+        inner join equipa
+        on equipa.idEquipa = jogador.idEquipa where idJogador = ?';
+        $stmt = $this->db->prepare( $sql );
+        $stmt->bindValue( 1, $id );
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+}
 ?>

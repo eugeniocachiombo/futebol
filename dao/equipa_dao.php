@@ -35,12 +35,12 @@ class EquipaDao {
         }
     }
 
-    function Eliminar( $equipa ) {
+    function Eliminar( $id ) {
 
         $this->db = GetConexao();
         $sql = 'delete from equipa where idEquipa = ?';
         $stmt = $this->db->prepare( $sql );
-        $stmt->bindValue( 1, $equipa->getIdEquipa() );
+        $stmt->bindValue( 1, $id );
 
         if ( $stmt->execute() ) {
             echo '<br>Eliminado feito com sucesso';
@@ -62,12 +62,13 @@ class EquipaDao {
         }
     }
 
-    function RetornoEquipas() {
+    function RetornoEquipas($id) {
         $this->db = GetConexao();
-        $sql = 'select * from equipa';
+        $sql = 'select * from equipa where idEquipa = ?';
         $stmt = $this->db->prepare( $sql );
+        $stmt->bindValue(1, $id);
         $stmt->execute();
-        return $stmt->fetchAll();
+        return $stmt->fetch();
     }
 }
 ?>
