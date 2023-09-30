@@ -1,3 +1,7 @@
+<a href="views/equipa/index.html">Equipa</a> <br>
+<a href="views/jogador/index.html">Jogador</a> <br>
+<a href="views/jogo/index.html">Jogo</a> <br>
+
 <?php
     include 'class/equipa.php';
     include 'class/jogador.php';
@@ -15,14 +19,7 @@
      * 
      */
     
-    
-        $equipaA = new Equipa(30, "Barcelona"); 
-        $equipaDAO = new EquipaDao();
-        //$equipaDAO->Cadastrar($equipaA);
-        //$equipaDAO->Actualizar($equipaB);
-        $equipaDAO->Eliminar(33);
-        $equipaDAO->Buscar();
-        echo "<hr>";
+        
     /* */
     
     /* 

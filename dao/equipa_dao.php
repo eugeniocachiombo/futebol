@@ -1,5 +1,4 @@
 <?php
-include 'dao/__conexao.php';
 
 class EquipaDao {
 
