@@ -14,7 +14,6 @@
         }
 
         function Eliminar($id){
-          //  array_splice($this->db, $id-1, $id-1);
           unset($this->db[$id - 1]);
         }
 
@@ -24,6 +23,10 @@
             echo "<br>Nome da Equipa: " .  $value->getNomeEquipa();
             echo "<br> -------------- <br>";
           }
+        }
+
+        function RetornoEquipas(){
+          return $this->db;
         }
     }
 ?>
