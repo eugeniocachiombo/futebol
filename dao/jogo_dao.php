@@ -3,23 +3,17 @@
     {
         private $db = array();
         
-        function Cadastrar($tema, $equipaA, $equipaB, $hora, $data){
-            $id = sizeof($this->db) + 1;
-            $Jogo = new Jogo($id, $tema, $equipaA, $equipaB, $hora, $data);
-            array_push($this->db, $Jogo);
-        }
+        function Cadastrar($jogo){
+          array_push($this->db, $jogo);
+      }
 
-        function Actualizar($tema, $equipaA, $equipaB, $hora, $data, $id){
-            $this->db[$id - 1]->setTemaJogo($tema);
-            $this->db[$id - 1]->setEquipaAJogo($equipaA);
-            $this->db[$id - 1]->setEquipaBJogo($equipaB);
-            $this->db[$id - 1]->setHoraJogoJogo($hora);
-            $this->db[$id - 1]->setDataJogo($data);
-        }
+      function Actualizar($jogo){
+          $this->db[$jogo->getIdJogo() - 1] = $jogo;
+      }
 
-        function Eliminar($id){
-          unset($this->db[$id - 1]);
-        }
+      function Eliminar($jogo){
+        unset($this->db[$jogo->getIdJogo() - 1]);
+      }
 
         function Buscar(){
           foreach ($this->db as $value) {

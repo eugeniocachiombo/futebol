@@ -3,23 +3,17 @@
     {
         private $db = array();
 
-        function Cadastrar($nome, $idade, $peso, $altura, $equipa){
-            $id = sizeof($this->db) + 1;
-            $jogador = new Jogador($id, $nome, $idade, $peso, $altura, $equipa);
-            array_push($this->db, $jogador);
-        }
+      function Cadastrar($jogador){
+          array_push($this->db, $jogador);
+      }
 
-        function Actualizar($nome, $idade, $peso, $altura, $equipa, $id){
-            $this->db[$id - 1]->setNomeJogador($nome);
-            $this->db[$id - 1]->setIdadeJogador($idade);
-            $this->db[$id - 1]->setPesoJogador($peso);
-            $this->db[$id - 1]->setAlturaJogador($altura);
-            $this->db[$id - 1]->setEquipa($equipa);
-        }
+      function Actualizar($jogador){
+          $this->db[$jogador->getIdJogador() - 1] = $jogador;
+      }
 
-        function Eliminar($id){
-          unset($this->db[$id - 1]);
-        }
+      function Eliminar($jogador){
+        unset($this->db[$jogador->getIdJogador() - 1]);
+      }
 
         function Buscar(){
           foreach ($this->db as $value) {

@@ -3,18 +3,16 @@
     {
         private $db = array();
 
-        function Cadastrar($nome){
-            $id = sizeof($this->db) + 1;
-            $equipa = new Equipa($id, $nome);
+        function Cadastrar($equipa){
             array_push($this->db, $equipa);
         }
 
-        function Actualizar($nome, $id){
-            $this->db[$id - 1]->setNomeEquipa($nome);
+        function Actualizar($equipa){
+            $this->db[$equipa->getIdEquipa() - 1] = $equipa;
         }
 
-        function Eliminar($id){
-          unset($this->db[$id - 1]);
+        function Eliminar($equipa){
+          unset($this->db[$equipa->getIdEquipa() - 1]);
         }
 
         function Buscar(){

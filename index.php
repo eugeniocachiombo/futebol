@@ -15,36 +15,37 @@
      * 
      */
     
+    $equipaA = new Equipa(1, "Barcelona"); 
+    $equipaB = new Equipa(2, "Real"); 
+    $equipaC = new Equipa(3, "PSG"); 
     $equipaDAO = new EquipaDao();
-    $equipaDAO->Cadastrar("Barcelona");
-    $equipaDAO->Cadastrar("Real Madrid");
-    $equipaDAO->Cadastrar("Bayer");
-    $equipaDAO->Cadastrar("PSG");
-    $equipaDAO->Cadastrar("Manchester City");
-    $equipaDAO->Cadastrar("Manchester United");
-    $equipaDAO->Actualizar("PSG", 4);
-    //$equipaDAO->Eliminar(1);
+
+    $equipaDAO->Cadastrar($equipaA);
+    $equipaDAO->Actualizar($equipaB);
+    $equipaDAO->Eliminar($equipaA);
     $equipaDAO->Buscar();
     echo "<hr>";
 
-    $equipa = $equipaDAO->RetornoEquipas();
+   
+    $jogadorA = new Jogador(1, "Ronaldo", 39, 87.90, 1.90, $equipaB);
+    $jogadorB = new Jogador(2, "Messi", 39, 87.90, 1.90, $equipaA);
+    $jogadorC = new Jogador(3, "Mbape", 39, 87.90, 1.90, $equipaC);
     $jogadorDAO = new JogadorDao();
-    $jogadorDAO->Cadastrar("Ronaldo", 39, 87.90, 1.90, $equipa[1]);
+    
+    $jogadorDAO->Cadastrar($jogadorA);
+    $jogadorDAO->Cadastrar($jogadorB);
+    $jogadorDAO->Cadastrar($jogadorC);
     $jogadorDAO->Buscar();
     echo "<hr>";
-    $equipa = $equipaDAO->RetornoEquipas();
-    $jogadorDAO = new JogadorDao();
-    $jogadorDAO->Cadastrar("Messi", 39, 87.90, 1.90, $equipa[0]);
-    $jogadorDAO->Buscar();
-    echo "<hr>";
 
-
-
+    $jogoA = new Jogo(1,"Partida Amigável", $equipaA, $equipaB, "10:30", "12/04/2024");
     $jogoDAO = new JogoDao();
-    $jogoDAO->Cadastrar("Partida Amigável", $equipa[rand(0,2)], $equipa[rand(3,5)], "10:30", "12/04/2024");
+
+    $jogoDAO->Cadastrar($jogoA);
     $jogoDAO->Buscar();
-    $jogo = $jogoDAO->RetornoJogos();
     echo "<hr>";
+
+    $jogo = $jogoDAO->RetornoJogos();
     $jogo[0]->MarcarJogo();
     $jogo[0]->Jogar();
     $jogo[0]->info();
