@@ -12,7 +12,7 @@ idJogador int primary key AUTO_INCREMENT NOT NULL,
 nomeJogador VARCHAR(50),
 idadeJogador INT,
 pesoJogador DECIMAL(4,2),
-alturaJogador DECIMAL(3,1),
+alturaJogador DECIMAL(3,2),
 idEquipa INT,
 FOREIGN KEY (idEquipa) 
 REFERENCES equipa(idEquipa)

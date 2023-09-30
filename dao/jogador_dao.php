@@ -31,8 +31,7 @@ class JogadorDao {
         $stmt->bindValue( 4, $jogador->getAlturaJogador() );
         $stmt->bindValue( 5, $jogador->getEquipa()->getIdEquipa());
         $stmt->bindValue( 6, $jogador->getIdJogador() );
-
-        echo "saida: ".$jogador->getNomeJogador() . "<br>";
+        
         if ( $stmt->execute() ) {
             echo '<br>Actualização feito com sucesso';
         } else {
@@ -60,16 +59,7 @@ class JogadorDao {
                 on equipa.idEquipa = jogador.idEquipa';
         $stmt = $this->db->prepare( $sql );
         $stmt->execute();
-
-        foreach ( $stmt->fetchAll() as $value ) {
-            echo 'Id do Jogador: ' . $value["idJogador"];
-            echo '<br>Nome do Jogador: ' .  $value["nomeJogador"];
-            echo '<br>Idade do Jogador: ' .  $value["idadeJogador"];
-            echo '<br>Peso do Jogador: ' .  $value["pesoJogador"];
-            echo '<br>Altura do Jogador: ' .  $value["alturaJogador"];
-            echo '<br>Equipa do Jogador: ' .  $value["nomeEquipa"];
-            echo '<br> -------------- <br>';
-        }
+        return $stmt->fetchAll();
     }
 
     function RetornoJogadores() {

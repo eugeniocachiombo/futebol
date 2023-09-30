@@ -1,5 +1,6 @@
 
 <body>
+    <a href="../../">Início</a> <hr>
     <form action="CRUD/index.php" method="post">
         <b>Formulário de Equipa</b> <br> <br>
         <input type="text" name="idEquipa" id="idEquipa" placeholder="Id" style="width: 50px">
@@ -8,7 +9,7 @@
         <input type="submit" value="Actualizar" name="actualizar">
         <input type="submit" value="Eliminar" name="eliminar">
     </form>
-
+    
     <?php include "CRUD/tabela.php"; ?>
 </body>
 

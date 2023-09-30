@@ -1,6 +1,6 @@
-<a href="views/equipa/index.html">Equipa</a> <br>
-<a href="views/jogador/index.html">Jogador</a> <br>
-<a href="views/jogo/index.html">Jogo</a> <br>
+<a href="views/equipa/">Equipa</a> <br>
+<a href="views/jogador/">Jogador</a> <br>
+<a href="views/jogo/">Jogo</a> <br>
 
 <?php
     include 'class/equipa.php';
@@ -20,22 +20,7 @@
      */
     
         
-    /* */
-    
-    /* 
-        $equipaDAO = new EquipaDao();
-        $retornoDao = $equipaDAO->RetornoEquipas();
-        $equipa = new Equipa($retornoDao[0]["idEquipa"], $retornoDao[0]["nomeEquipa"]);
-
-        $jogador = new Jogador(7, "Eugénio", 39, 87.90, 1.90, $equipa);
-
-        $jogadorDAO = new JogadorDao();
-        $jogadorDAO->Cadastrar($jogador);
-        $jogadorDAO->Actualizar($jogador);
-        $jogadorDAO->Eliminar($jogador);
-        $jogadorDAO->Buscar();
-        echo "<hr>";
-    */
+   
 
     /*
         $equipaDAO = new EquipaDao();
