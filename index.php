@@ -2,7 +2,7 @@
     include 'class/equipa.php';
     include 'class/jogador.php';
     include 'class/jogo.php';
-    include 'app/dao/equipa_dao.php';
+    include 'dao/equipa_dao.php';
 
     /* 
      * 
@@ -12,7 +12,6 @@
      * jogo recebe 7 argumentos como parâmetro após ser instanciado, por intermédio do que lhe foi passado ao do construtor
      * 
      */
-
     
     $equipaDAO = new EquipaDao();
     $equipaDAO->Cadastrar("Barcelona");
@@ -22,8 +21,7 @@
     $equipaDAO->Actualizar("PSG Neymar e Mbappe", 4);
     $equipaDAO->Eliminar(1);
     $equipaDAO->Buscar();
-   
-    
+
     
 
 ?>
