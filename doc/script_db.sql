@@ -1,7 +1,6 @@
 create database futebol;
 use futebol;
 
-
 create table equipa (
 idEquipa int primary key AUTO_INCREMENT NOT NULL, 
 nomeEquipa VARCHAR(50)
@@ -28,6 +27,20 @@ idEquipaB int,
 FOREIGN KEY (idEquipaB) REFERENCES equipa(idEquipa) on delete CASCADE,
 horaJogo TIME,
 dataJogo DATE,
-estadoJogo bool,
-infoJogo bool 
+estadoJogo TINYINT,
+infoJogo TINYINT 
+);
+
+create table jogos_marcados(
+idJogo_marcado int primary key AUTO_INCREMENT NOT NULL,
+temaJogo VARCHAR(50),
+idEquipaA int,
+idEquipaB int,
+horaJogo TIME,
+dataJogo DATE
+);
+
+create table resultado_final(
+resultado_final int primary key AUTO_INCREMENT NOT NULL,
+info VARCHAR(50)
 );

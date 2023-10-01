@@ -7,6 +7,7 @@ include '../../dao/equipa_dao.php';
 
 <body>
     <a href="../../">Início</a> <hr>
+    <a href="CRUD/resultados.php">resultados</a> <hr>
     <form action="CRUD/index.php" method="post">
         <b>Formulário de Jogo</b> <br> <br>
         <input type="text" name="idJogo" id="idJogo" placeholder="Id" style="width: 50px">
@@ -38,10 +39,15 @@ include '../../dao/equipa_dao.php';
 
         <input type="submit" value="Cadastrar" name="cadastrar"> 
         <input type="submit" value="Actualizar" name="actualizar">
-        <input type="submit" value="Eliminar" name="eliminar">
+        <input type="submit" value="Eliminar" name="eliminar"> <br> <br>
+
+        <input type="submit" name="marcar_jogo" value="Marcar Jogo"> 
+        <input type="submit" name="jogar" value="Jogar">
+        <input type="submit" name="info" value="Informações"> <br> <br>
     </form>
     
     <?php include "CRUD/tabela.php"; ?>
+    <?php include "CRUD/jogos_marcados.php"; ?>
 </body>
 
 

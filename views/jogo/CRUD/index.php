@@ -37,4 +37,19 @@ if (isset($_POST["eliminar"])) {
     ?> <script src="../../../assets/js/Jogo/index.js"></script> <?php
 }
 
+if (isset($_POST["marcar_jogo"])) {
+    $jogoDAO->MarcarJogo($idJogo);
+    ?> <script src="../../../assets/js/Jogo/index.js"></script> <?php
+}
+
+if (isset($_POST["jogar"])) {
+    $jogoDAO->Jogar($idJogo);
+    ?> <script src="../../../assets/js/Jogo/index.js"></script> <?php
+}
+
+if (isset($_POST["info"])) {
+    $jogoDAO->Info($idJogo);
+    ?> <script src="../../../assets/js/Jogo/index.js"></script> <?php
+}
+
 
