@@ -5,9 +5,11 @@ include '../../class/jogo.php';
 $jogoDAO = new JogoDao();
 $lista = $jogoDAO->Buscar();
 ?>
+<link rel="stylesheet" href="../../assets/css/tabela.css">
 
 <hr>
 <h2>Tabela de dados</h2>
+<div id="table-responsive">
 <table border='1'>
     <tr>
         <th>Id</th>
@@ -34,3 +36,4 @@ $lista = $jogoDAO->Buscar();
     <?php } ?>
     
 </table>
+</div>

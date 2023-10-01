@@ -1,3 +1,6 @@
+<?php include '../../views/inc/headHTML.html';?>
+<?php include '../../views/inc/header.html';?>
+
 <?php
 include '../../dao/__conexao.php';
 include '../../dao/equipa_dao.php';
@@ -5,7 +8,7 @@ include '../../dao/equipa_dao.php';
 
 <title>Formulário de Jogador</title>
 
-<body>
+<div class="container" style="min-height: 60vh">
     <a href="../../">Início</a> <hr>
     <form action="CRUD/index.php" method="post">
         <b>Formulário de Jogador</b> <br> <br>
@@ -33,6 +36,9 @@ include '../../dao/equipa_dao.php';
     </form>
     
     <?php include "CRUD/tabela.php"; ?>
-</body>
+</div>
 
 
+<br>
+<?php include '../../views/inc/footer.html';?>
+<?php include '../../views/inc/footHTML.html';?>
