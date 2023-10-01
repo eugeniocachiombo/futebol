@@ -9,7 +9,10 @@ body{
 }
 
 input[type='submit']{
-    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 7px;
+    padding-bottom: 7px;
     background: cadetblue;
     color: aliceblue;
     border-radius: 10px;
@@ -40,3 +43,9 @@ footer{
     background: dimgrey;
     color: aliceblue;
 }
+
+#table-responsive{
+    overflow: auto;
+    max-height: 50vh;
+}
+
