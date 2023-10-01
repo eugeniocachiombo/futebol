@@ -1,3 +1,9 @@
+<?php
+include '../../dao/__conexao.php';
+include '../../dao/equipa_dao.php';
+?>
+
+<title>Formulário de Jogador</title>
 
 <body>
     <a href="../../">Início</a> <hr>
@@ -13,8 +19,6 @@
         <select name="idEquipa" id=""> 
             <option value="">Selecione...</option>
             <?php 
-            include '../../dao/__conexao.php';
-            include '../../dao/equipa_dao.php';
             $equipaDAO = new EquipaDao();
             $lista = $equipaDAO->Buscar();
             foreach ( $lista as $value ) { ?>

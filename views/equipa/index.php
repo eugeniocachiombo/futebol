@@ -1,3 +1,4 @@
+<title>Formulário de Equipa</title>
 
 <body>
     <a href="../../">Início</a> <hr>

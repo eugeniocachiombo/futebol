@@ -64,16 +64,7 @@ class JogoDao {
         on jogo.idEquipaB = equipaB.idEquipa';
         $stmt = $this->db->prepare( $sql );
         $stmt->execute();
-
-        foreach ( $stmt->fetchAll() as $value ) {
-            echo 'Id do Jogo: ' . $value[ 'idJogo' ];
-            echo '<br>tema do Jogo: ' .  $value[ 'temaJogo' ];
-            echo '<br>equipaA do Jogo: ' .  $value[ 'equipaA' ];
-            echo '<br>equipaB do Jogo: ' .  $value[ 'equipaB' ];
-            echo '<br>horaJogo do Jogo: ' .  $value[ 'horaJogo' ];
-            echo '<br>Data do Jogo: ' .  $value[ 'dataJogo' ];
-            echo '<br> -------------- <br>';
-        }
+        return $stmt->fetchAll(); 
     }
 
     function RetornoJogos($id) {
