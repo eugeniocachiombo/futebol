@@ -1,18 +1,20 @@
 <?php include '../../views/inc/headHTML.html';?>
 <?php include '../../views/inc/header.html';?>
+<?php include '../../route/pegarURI.php';?>
 
 <title>Formulário de Equipa</title>
 
 <div class='container' style="min-height: 60vh">
     <a href='../../'>Início</a>
     <hr>
-    <form class="" action='CRUD/index.php' method='post'>
-        <legend><b>Cadastrar de Equipa</b></legend> <br>
-        <input type='hidden' name='idEquipa' id='idEquipa' placeholder='Id'> 
-        <input type='text' name='nomeEquipa' id='nomeEquipa' placeholder='Nome'> 
-        <input class="mt-3 mb-3" style="width: 200px" type='submit' value='Cadastrar' name='cadastrar'>
-    </form>
-
+    <?php
+        if($uri_rota[4] == "index.php?actualizar"){
+            include 'CRUD/form_actualizar.php';
+        }else{
+            include 'CRUD/form_cadastrar.php';
+        }
+    ?>
+    <hr>
     <?php include 'CRUD/tabela.php';?>
 </div>
 
