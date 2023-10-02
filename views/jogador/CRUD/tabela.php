@@ -19,7 +19,7 @@ $lista = $jogadorDAO->Buscar();
             <th>Peso</th>
             <th>Altura</th>
             <th>Equipa</th>
-            <th colspan="2"></th>
+            <th></th>
         </tr>
 
         <?php foreach ( $lista as $value ) { ?>
@@ -56,7 +56,6 @@ $lista = $jogadorDAO->Buscar();
                     <input value="<?php echo $value["nomeEquipa"]; ?> " type="hidden" name="idEquipa" id="idEquipa" placeholder="Equipa">
                 </td>
             
-                <td><input type="submit" value="Actualizar" name="actualizar"></td>
                 <td><input type="submit" value="Eliminar" name="eliminar"></td>
             </form>
         </tr>
