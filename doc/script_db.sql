@@ -42,5 +42,5 @@ dataJogo DATE
 
 create table resultado_final(
 resultado_final int primary key AUTO_INCREMENT NOT NULL,
-info VARCHAR(50)
+info text
 );

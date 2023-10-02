@@ -119,6 +119,19 @@ class JogoDao {
         return $stmt->fetchAll(); 
     }
 
+    function EliminarJogosMarcados( $id ) {
+        $this->db = GetConexao();
+        $sql = 'delete from jogos_marcados where idJogo_marcado = ?';
+        $stmt = $this->db->prepare( $sql );
+        $stmt->bindValue( 1, $id );
+
+        if ( $stmt->execute() ) {
+            echo '<br>Eliminação feito com sucesso';
+        } else {
+            echo '<br>Erro de Eliminação';
+        }
+    }
+
     function Jogar($id) {
         $jogo = $this->RetornoJogos($id);
         if($jogo["estadoJogo"] == true){
@@ -134,6 +147,7 @@ class JogoDao {
             $equipaB = new Equipa($retornoEquipaB["idEquipa"], $retornoEquipaB["nomeEquipa"]);
             $jogo_novos_dados = new Jogo($id, $jogo["temaJogo"],$equipaA,$equipaB, $jogo["horaJogo"], $jogo["dataJogo"], false, true);
             $this->Actualizar( $jogo_novos_dados );
+            $this->EliminarJogosMarcados( $id );
         }
         else if($jogo["infoJogo"] == true){
             echo "<br> Este jogo Já aconteceu <br> ------------------------ <br>";
@@ -145,21 +159,23 @@ class JogoDao {
     function Info($id) {
         $jogo = $this->RetornoJogos($id);
         if($jogo["infoJogo"] == true){
-
-            $info = $jogo["equipaA"] . " " . rand(0,5) . " x ". rand(0,5) . " " . $jogo["equipaB"] . "</h2> <br> ------------------------ ";
-            echo "<h2> Resultado final:  <br>" .  $info;
-
+            $tratar = explode("-", $jogo["dataJogo"]);
+            $data = $tratar[2] . "-" . $tratar[1] . "-" . $tratar[0];
+            $info = $jogo["equipaA"] . " " . rand(0,5) . " x ". rand(0,5) . " " . $jogo["equipaB"] . "</h2> ------------------------ ";
+            echo "<h2> Resultado final:  <br>" .  $info ;
             $this->Eliminar( $jogo["idJogo"] );
-            $this->CadastrarResultadoFinal($info);
+            $info_tratado = $info . " <br> Data: " . $data . "  Hora: " . $jogo["horaJogo"] . " <br> ------------------------ ";
+            $this->CadastrarResultadoFinal($info_tratado);
+        
         }else{
             echo "<br> Nenhuma informação de momento <br> ------------------------ <br>";
         }
     }
 
-    function CadastrarResultadoFinal($info){
+    function CadastrarResultadoFinal($info_tratado){
         $sql = 'insert into resultado_final (info) values (?)';
         $stmt = $this->db->prepare( $sql );
-        $stmt->bindValue( 1, $info );
+        $stmt->bindValue( 1, $info_tratado );
 
         if ( $stmt->execute() ) {
             echo '<br>Cadastro feito com sucesso';

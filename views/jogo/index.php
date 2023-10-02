@@ -10,7 +10,7 @@ include '../../dao/equipa_dao.php';
 
 <div class='container' style="min-height: 60vh">
     <a href="../../">Início</a> <hr>
-    <a href="CRUD/resultados.php">resultados</a> <hr>
+    
     <form action="CRUD/index.php" method="post">
         <div class="row">
             <h2><b>Formulário de Jogo</b> </h2>

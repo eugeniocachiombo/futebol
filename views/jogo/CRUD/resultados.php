@@ -4,7 +4,7 @@ $lista = $jogoDAO->ResultadoFinal();
 ?>
 
 <hr>
-<h2>Resultados: </h2>
+<h2>Resultados</h2>
 
 <div id="table-responsive">
     <table style="width: 800px" >
@@ -15,7 +15,7 @@ $lista = $jogoDAO->ResultadoFinal();
         <?php foreach ( $lista as $value ) { ?>
         <tr>
             <?php
-                echo '<td class="text-start">' . $value[ 'info' ]. '</td>';
+                echo '<td class="text-start" style="font-size: 25px">' . $value[ 'info' ]. '</td>';
             ?>
         </tr>
         <?php } ?>
