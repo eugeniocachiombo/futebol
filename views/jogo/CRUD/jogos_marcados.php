@@ -35,4 +35,4 @@ $lista = $jogoDAO->BuscarJogosMarcados();
     <?php } ?>
     
 </table>
-    </div>
+</div>

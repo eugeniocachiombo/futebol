@@ -10,6 +10,7 @@
             <a href="../jogo/">Jogo</a> <br>
        
         <?php include "../jogo/CRUD/jogos_marcados.php"; ?>
+        <?php include "../jogo/CRUD/resultados.php"; ?>
     </div> <br>
 
 <?php include '../../views/inc/footer.html';?>
