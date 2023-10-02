@@ -12,45 +12,52 @@ include '../../dao/equipa_dao.php';
     <a href="../../">Início</a> <hr>
     <a href="CRUD/resultados.php">resultados</a> <hr>
     <form action="CRUD/index.php" method="post">
-        <b>Formulário de Jogo</b> <br> <br>
-        <input type="text" name="idJogo" id="idJogo" placeholder="Id" style="width: 50px">
-        <input type="text" name="temaJogo" id="temaJogo" placeholder="Tema"> <br> <br>
+        <div class="row">
+            <h2><b>Formulário de Jogo</b> </h2>
+            <div class="col">
+                <input type="text" name="idJogo" id="idJogo" placeholder="Id">
+                <input type="text" name="temaJogo" id="temaJogo" placeholder="Tema"> 
+            </div>
 
-        <select name="idEquipaA" id=""> 
-            <option value="">Selecione...</option>
-            <?php 
-                $equipaDAO = new EquipaDao();
-                $lista = $equipaDAO->Buscar();
-                foreach ( $lista as $value ) { ?>
-                    <option value="<?php echo $value[ 'idEquipa' ]; ?>"><?php echo $value[ 'nomeEquipa' ]; ?></option>
-                <?php } ?>
-       </select> 
+            <div class="col">
+                <input type="text" name="horaJogo" id="horaJogo" placeholder="Hora"> 
+                <input type="text" name="dataJogo" id="dataJogo" placeholder="Data"> 
+            </div>
 
-        <select name="idEquipaB" id=""> 
-            <option value="">Selecione...</option>
-            <?php 
-                $equipaDAO = new EquipaDao();
-                $lista = $equipaDAO->Buscar();
-                foreach ( $lista as $value ) { ?>
-                    <option value="<?php echo $value[ 'idEquipa' ]; ?>"><?php echo $value[ 'nomeEquipa' ]; ?></option>
-                <?php } ?>
-       </select> <br> <br>
+            <div class="col">
+                <div class="col">
+                    <select name="idEquipaA" id="idEquipaA"> 
+                        <option value="">Selecione...</option>
+                        <?php 
+                            $equipaDAO = new EquipaDao();
+                            $lista = $equipaDAO->Buscar();
+                            foreach ( $lista as $value ) { ?>
+                                <option value="<?php echo $value[ 'idEquipa' ]; ?>"><?php echo $value[ 'nomeEquipa' ]; ?></option>
+                            <?php } ?>
+                    </select> 
+                </div>
 
-        <input type="text" name="horaJogo" id="horaJogo" placeholder="Hora"> 
-        <input type="text" name="dataJogo" id="dataJogo" placeholder="Data"> <br> <br>
-        
+                <div class="col">
+                    <select name="idEquipaB" id="idEquipaB"> 
+                        <option value="">Selecione...</option>
+                        <?php 
+                            $equipaDAO = new EquipaDao();
+                            $lista = $equipaDAO->Buscar();
+                            foreach ( $lista as $value ) { ?>
+                                <option value="<?php echo $value[ 'idEquipa' ]; ?>"><?php echo $value[ 'nomeEquipa' ]; ?></option>
+                            <?php } ?>
+                    </select>             
+                </div>
+            </div>
+        </div>
 
-        <input type="submit" value="Cadastrar" name="cadastrar"> 
-        <input type="submit" value="Actualizar" name="actualizar">
-        <input type="submit" value="Eliminar" name="eliminar"> <br> <br>
-
-        <input type="submit" name="marcar_jogo" value="Marcar Jogo"> 
-        <input type="submit" name="jogar" value="Jogar">
-        <input type="submit" name="info" value="Informações"> <br> <br>
+        <div class="pt-3" > 
+            <input type="submit" value="Cadastrar" name="cadastrar" style="width: 205px"> 
+        </div>
     </form>
     
     <?php include "CRUD/tabela.php"; ?>
-    <?php include "CRUD/jogos_marcados.php"; ?>
+    
 </div>
 
 
