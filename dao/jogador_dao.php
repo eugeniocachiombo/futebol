@@ -23,14 +23,13 @@ class JogadorDao {
 
     function Actualizar( $jogador ) {
         $this->db = GetConexao();
-        $sql = 'update jogador set nomeJogador=?, idadeJogador=?, pesoJogador=?, alturaJogador=?, idEquipa=? where idJogador = ?';
+        $sql = 'update jogador set nomeJogador=?, idadeJogador=?, pesoJogador=?, alturaJogador=? where idJogador = ?';
         $stmt = $this->db->prepare( $sql );
         $stmt->bindValue( 1, $jogador->getNomeJogador() );
         $stmt->bindValue( 2, $jogador->getIdadeJogador() );
         $stmt->bindValue( 3, $jogador->getPesoJogador() );
         $stmt->bindValue( 4, $jogador->getAlturaJogador() );
-        $stmt->bindValue( 5, $jogador->getEquipa()->getIdEquipa());
-        $stmt->bindValue( 6, $jogador->getIdJogador() );
+        $stmt->bindValue( 5, $jogador->getIdJogador() );
         
         if ( $stmt->execute() ) {
             echo '<br>Actualização feito com sucesso';

@@ -4,6 +4,7 @@
 <title>Formulário de Equipa</title>
 <body>
     
+
 <div class='container' style="min-height: 60vh">
     <a href="../equipa/">Equipa</a> <br>
     <a href="../jogador/">Jogador</a> <br>

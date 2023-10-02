@@ -11,30 +11,40 @@ include '../../dao/equipa_dao.php';
 <div class="container" style="min-height: 60vh">
     <a href="../../">Início</a> <hr>
     <form action="CRUD/index.php" method="post">
-        <b>Formulário de Jogador</b> <br> <br>
-        <input type="text" name="idJogador" id="idJogador" placeholder="Id" style="width: 50px">
-        <input type="text" name="nomeJogador" id="nomeJogador" placeholder="Nome"> <br> <br>
+        <h2><b>Cadastrar Jogador</b></h2> 
+        <div class="row ">
+            <div class="col">
+                <input type="hidden" name="idJogador" id="idJogador" placeholder="Id" >
+                <input type="text" name="nomeJogador" id="nomeJogador" placeholder="Nome"> 
+            </div>
 
-        <input type="text" name="idadeJogador" id="idadeJogador" placeholder="Idade"> 
-        <input type="text" name="pesoJogador" id="pesoJogador" placeholder="Peso"> <br> <br>
+            <div class="col">
+                <input type="text" name="idadeJogador" id="idadeJogador" placeholder="Idade"> 
+                <input type="text" name="pesoJogador" id="pesoJogador" placeholder="Peso"> 
+            </div>
 
-        <input type="text" name="alturaJogador" id="alturaJogador" placeholder="Altura"> 
-        <select name="idEquipa" id=""> 
-            <option value="">Selecione...</option>
-            <?php 
-            $equipaDAO = new EquipaDao();
-            $lista = $equipaDAO->Buscar();
-            foreach ( $lista as $value ) { ?>
-                <option value="<?php echo $value[ 'idEquipa' ]; ?>"><?php echo $value[ 'nomeEquipa' ]; ?></option>
-            <?php } ?>
-       </select> 
-        <br> <br>
-
-        <input type="submit" value="Cadastrar" name="cadastrar"> 
-        <input type="submit" value="Actualizar" name="actualizar">
-        <input type="submit" value="Eliminar" name="eliminar">
+            <div class="col">
+                <input type="text" name="alturaJogador" id="alturaJogador" placeholder="Altura"> 
+                <div>
+                    <select  name="idEquipa" id="idEquipa"> 
+                        <option value="">Selecione...</option>
+                        <?php 
+                        $equipaDAO = new EquipaDao();
+                        $lista = $equipaDAO->Buscar();
+                        foreach ( $lista as $value ) { ?>
+                            <option value="<?php echo $value[ 'idEquipa' ]; ?>"><?php echo $value[ 'nomeEquipa' ]; ?></option>
+                        <?php } ?>
+                    </select> 
+                </div>
+            </div>
+        </div>
+        
+        <div class="pt-3" >  
+            <input type="submit" value="Cadastrar" name="cadastrar" style="width: 205px">    
+        </div>
+        
     </form>
-    
+    <hr>
     <?php include "CRUD/tabela.php"; ?>
 </div>
 

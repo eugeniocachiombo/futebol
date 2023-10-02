@@ -6,30 +6,17 @@
 body{
     font-family: Courier, monospace;
     background: burlywood;
+    animation: opacidade 2s;
 }
 
-input[type='submit']{
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 7px;
-    padding-bottom: 7px;
-    background: cadetblue;
-    color: aliceblue;
-    border-radius: 10px;
-}
+@keyframes opacidade{
+   /* 0%{
+        filter: opacity(10%);
+    }
 
-input[type='submit']:hover{
-    background: rgb(44, 73, 74);
-}
-
-input[type='text']{
-    padding: 5px;
-    border: 2px solid cadetblue;
-    background: khaki;
-}
-
-input[type='text']:hover{
-    background: khaki;
+    100%{
+        filter: opacity(100%);
+    }*/
 }
 
 header{
